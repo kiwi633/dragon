@@ -2,13 +2,19 @@ package main
 
 import (
 	"fmt"
-	"runtime"
+	"net/http"
 )
 
 func main() {
-	fmt.Printf("Dragon programming language!\n")
-	fmt.Printf("Author: suntong\n")
-	fmt.Printf("This is an interpreter program developed using Go \n")
-	fmt.Printf("Go version: %s", runtime.Version())
-	fmt.Printf("Feel free to type in commands\n")
+	http.HandleFunc("/hello-world", func(w http.ResponseWriter, r *http.Request) {
+		fmt.Fprintf(w, "OK!")
+	})
+	http.ListenAndServe(":8890", nil)
+}
+
+type Person struct {
+	Name   string
+	Sex    string
+	IdType string
+	IdNo   string
 }
