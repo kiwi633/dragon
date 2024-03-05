@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	
 	http.HandleFunc("/hello-world", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "OK!")
 		b := r.Body
@@ -19,8 +20,11 @@ func main() {
 }
 
 type Person struct {
-	Name   string
-	Sex    string
-	IdType string
-	IdNo   string
+	Name   string `json:"name"`
+	Sex    string `json:"sex"`
+	IdType string `json:"idType"`
+	IdNo   string `json:"idNo"`
+}
+
+type USer struct {
 }
