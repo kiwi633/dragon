@@ -4,10 +4,11 @@ import (
 	"encoding/json"
 	"fmt"
 	"net/http"
+	"time"
 )
 
 func main() {
-	
+
 	http.HandleFunc("/hello-world", func(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, "OK!")
 		b := r.Body
@@ -26,5 +27,8 @@ type Person struct {
 	IdNo   string `json:"idNo"`
 }
 
-type USer struct {
+type User struct {
+	Id         string    `json:"id"`
+	Name       string    `json:"name"`
+	CreateTime time.Time `json:"createTime"`
 }
